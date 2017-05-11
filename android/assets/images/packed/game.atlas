@@ -1,0 +1,181 @@
+
+game.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bgtile
+  rotate: false
+  xy: 464, 234
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+blockBall0
+  rotate: false
+  xy: 134, 168
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+blockBall1
+  rotate: false
+  xy: 2, 20
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+blockBall2
+  rotate: false
+  xy: 200, 168
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+blockBall3
+  rotate: false
+  xy: 68, 20
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+blockBall4
+  rotate: false
+  xy: 266, 186
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+blockPlank
+  rotate: false
+  xy: 2, 2
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+blockPlankDamaged
+  rotate: false
+  xy: 266, 36
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+mapEasy1
+  rotate: false
+  xy: 2, 122
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1
+mapHard1
+  rotate: false
+  xy: 68, 122
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1
+particleBallPopping
+  rotate: false
+  xy: 332, 102
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+particleStar
+  rotate: false
+  xy: 68, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+projectileArrow
+  rotate: false
+  xy: 2, 104
+  size: 123, 16
+  orig: 123, 16
+  offset: 0, 0
+  index: -1
+projectileArrowGod
+  rotate: false
+  xy: 134, 234
+  size: 123, 16
+  orig: 123, 16
+  offset: 0, 0
+  index: -1
+projectileIcicle
+  rotate: false
+  xy: 2, 86
+  size: 123, 16
+  orig: 123, 16
+  offset: 0, 0
+  index: -1
+projectileMoon
+  rotate: false
+  xy: 332, 186
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+robe
+  rotate: false
+  xy: 398, 186
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerArrow
+  rotate: false
+  xy: 134, 102
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerArrowDouble
+  rotate: false
+  xy: 200, 102
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerGod
+  rotate: false
+  xy: 266, 120
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerIcicle
+  rotate: false
+  xy: 332, 120
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerLightning
+  rotate: false
+  xy: 398, 120
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerLunar
+  rotate: false
+  xy: 134, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerMagic
+  rotate: false
+  xy: 200, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+towerSkull
+  rotate: false
+  xy: 266, 54
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

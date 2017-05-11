@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="32" tileheight="32" nextobjectid="23">
+ <tileset firstgid="1" name="jungleset" tilewidth="32" tileheight="32" tilecount="512" columns="32">
+  <image source="../images/map1.png" trans="ffffff" width="1024" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="9" height="16">
+  <data encoding="csv">
+14,0,0,0,13,177,146,146,210,
+46,0,0,0,45,146,146,209,146,
+78,0,0,0,77,210,146,146,146,
+14,0,0,0,109,146,146,177,146,
+46,8,0,0,358,326,146,146,177,
+269,40,8,0,0,358,326,178,146,
+146,72,40,8,0,0,358,326,146,
+146,146,72,40,259,0,0,358,326,
+146,209,146,72,291,0,0,0,13,
+146,146,146,146,14,0,0,0,45,
+146,146,146,210,46,0,0,0,13,
+146,177,146,146,78,0,0,0,45,
+146,146,210,146,110,0,0,0,77,
+177,146,146,327,359,0,0,7,109,
+146,210,327,359,0,0,7,39,270,
+146,327,359,0,0,0,39,71,210
+</data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="5" x="0" y="-32">
+   <polygon points="0,0 32,0 32,544 0,544"/>
+  </object>
+  <object id="9" x="128" y="256">
+   <polygon points="0,0 32,0 32,32"/>
+  </object>
+  <object id="10" x="128" y="-32">
+   <polygon points="0,0 160,0 160,320 0,160"/>
+  </object>
+  <object id="11" x="256" y="256">
+   <polygon points="0,0 0,256 32,256 32,32"/>
+  </object>
+  <object id="14" x="32" y="-32">
+   <polygon points="0,0 96,0 64,-32"/>
+  </object>
+  <object id="17" x="256" y="448">
+   <polygon points="0,0 -64,64 -64,96 0,96"/>
+  </object>
+  <object id="18" x="32" y="160">
+   <polygon points="0,0 128,128 128,256 32,352 0,352"/>
+  </object>
+  <object id="21" x="32" y="512">
+   <polygon points="0,0 0,64 32,64 32,0"/>
+  </object>
+  <object id="22" x="64" y="576">
+   <polygon points="0,0 128,0 128,-32 0,-32"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="spawners" visible="0">
+  <object id="1" x="47" y="-20">
+   <polyline points="0,0 54,1"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="wallsensor" visible="0">
+  <object id="3" x="32" y="-32">
+   <polyline points="0,0 0,192 96,288 128,288 128,448 0,576 128,576 224,480 224,288 96,160 96,0 0,0"/>
+  </object>
+ </objectgroup>
+</map>
