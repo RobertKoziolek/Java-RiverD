@@ -1,5 +1,6 @@
 package com.robcio.riverd;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -21,6 +22,11 @@ import com.robcio.riverd.utils.Constants;
 import com.robcio.riverd.utils.SoundManager;
 import com.robcio.riverd.utils.SoundManager.Sounds;
 import com.robcio.riverd.utils.TextureManager;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.logging.Logger;
 
 public class TowerBuilder implements InputProcessor {
 	static private final int minDistanceFromTowers = 20;
@@ -50,37 +56,30 @@ public class TowerBuilder implements InputProcessor {
 	public boolean touchDown(final int x, final int y, int pointer, int newParam) {
 		if (pointer == 0) {
 			camera.unproject(testPoint.set(x, y, 0));
-			bodyThatWasHit = null;
+			bodyThatWasHit = null;//surface on map that is available for building on it
+			//FIXME doesn't allow to build at surfaces' connection
 			QueryCallback callback = new QueryCallback() {
-				private boolean tests[] = new boolean[4];
+				private boolean checkForBuildingSurface(Fixture fixture){
+					if (fixture.getBody().getType() != BodyType.StaticBody){
+						return false;
+					}
+					float xx = testPoint.x / Constants.PPM, yy = testPoint.y / Constants.PPM;
+					List<Vector2> pointsAround = Arrays.asList(
+							new Vector2(xx - minDistanceFromEdge, yy),
+							new Vector2(xx + minDistanceFromEdge, yy),
+							new Vector2(xx, yy + minDistanceFromEdge),
+							new Vector2(xx, yy - minDistanceFromEdge));
+					for (Vector2 vec : pointsAround){
+						if (fixture.testPoint(vec)==false){
+							return false;
+						}
+					}
+					return true;
+				}
 
 				public boolean reportFixture(Fixture fixture) {
-					float xx = testPoint.x / Constants.PPM, yy = testPoint.y / Constants.PPM;
-					if (!tests[0]) {// left
-						if (fixture.testPoint(xx - minDistanceFromEdge, yy) && fixture.getBody().getType() == BodyType.StaticBody) {
-							tests[0] = true;
-						}
-					}
-					if (!tests[1]) {// right
-						if (fixture.testPoint(xx + minDistanceFromEdge, yy) && fixture.getBody().getType() == BodyType.StaticBody) {
-							tests[1] = true;
-						}
-					}
-					if (!tests[2]) {// top
-						if (fixture.testPoint(xx, yy + minDistanceFromEdge) && fixture.getBody().getType() == BodyType.StaticBody) {
-							tests[2] = true;
-						}
-					}
-					if (!tests[3]) {// bottom
-						if (fixture.testPoint(xx, yy - minDistanceFromEdge) && fixture.getBody().getType() == BodyType.StaticBody) {
-							tests[3] = true;
-						}
-					}
-
-					for (int i = 0; i < 4; i++) {
-						if (tests[i] == false) {
-							return true;
-						}
+					if (checkForBuildingSurface(fixture)==false){
+						return true;
 					}
 					Vector2 vec = new Vector2(testPoint.x, testPoint.y);
 					for (Vector2 towerPosition : towerManager.getPositions()) {

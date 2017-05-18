@@ -59,6 +59,7 @@ public class Tower {
 
 ///E:/JavaWorkspaceFinal/riverd/images/starparticle.png
 	public void shoot() {
+		//TODO zrobic coz tym switchem
 		ProjectileInterface projectile;
 		float tmpAngle = angle + (MathUtils.random() - 0.5f) * accuracy;
 		switch (type) {
