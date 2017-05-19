@@ -1,6 +1,7 @@
 package com.robcio.riverd;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,9 +20,9 @@ public class RiverDMain extends Game {
 	public OrthographicCamera camera;
 	public AssetManager assets;
 
-	public LoadingScreen loadingScreen;
-	public SplashScreen splashScreen;
-	public GameScreen gameScreen;
+	private LoadingScreen loadingScreen;
+	private SplashScreen splashScreen;
+	private GameScreen gameScreen;
 	public BitmapFont font;
 
 	@Override
@@ -40,6 +41,9 @@ public class RiverDMain extends Game {
 		this.setScreen(loadingScreen);
 	}
 
+	public Screen getSplashScreen(){ return splashScreen;}
+	public Screen getGameScreen(){return gameScreen;}
+
 	@Override
 	public void render() {
 		super.render();
@@ -50,10 +54,6 @@ public class RiverDMain extends Game {
 		loadingScreen.dispose();
 		splashScreen.dispose();
 		gameScreen.dispose();
-
-		// System.out.println(batch.maxSpritesInBatch);// XXX debug max sprites
-		// in
-		// batch
 		batch.dispose();
 		assets.dispose();
 		font.dispose();

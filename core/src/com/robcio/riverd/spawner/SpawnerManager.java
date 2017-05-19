@@ -27,13 +27,13 @@ public class SpawnerManager {
 		}
 	}
 
-	private float time, biggerTime;
+	private float time, changeTypeTime;
 
 	public void update(float delta) {
 		time += delta;
-		biggerTime += delta;
-		if (biggerTime > 7f) {
-			biggerTime = 0;
+		changeTypeTime += delta;
+		if (changeTypeTime > 7f) {
+			changeTypeTime = 0;
 			changeType();
 		}
 		if (time > 1.5f) {

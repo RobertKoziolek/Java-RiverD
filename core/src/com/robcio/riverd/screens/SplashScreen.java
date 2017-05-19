@@ -30,17 +30,11 @@ public class SplashScreen implements Screen, InputProcessor {
 	public void show() {
 		centered = false;
 		stage.clear();
-		// Gdx.input.setInputProcessor(stage);
 		Gdx.input.setInputProcessor(this);
 
-		Texture splashTex = main.assets.get("images/riverdlogo.png", Texture.class);
-		splashImage = new Image(splashTex);
-		splashImage.setPosition(stage.getWidth() / 2 - 70, stage.getHeight());
-		splashImage.addAction(sequence(alpha(0f), scaleTo(.1f, .1f),
-				parallel(fadeIn(2f, Interpolation.pow2), scaleTo(0.7f, 0.7f, 2.5f, Interpolation.pow5),
-						moveTo(stage.getWidth() / 2 - 140, stage.getHeight() / 2 - 105, 2f, Interpolation.swing))));
-		stage.addActor(splashImage);
+		initializeSplash();
 	}
+
 
 	@Override
 	public void render(float delta) {
@@ -50,24 +44,29 @@ public class SplashScreen implements Screen, InputProcessor {
 		update(delta);
 
 		stage.draw();
-		// main.batch.begin();
-		// main.font.draw(main.batch, main.TITLE, 120, 120);
-		// main.batch.end();
 	}
 
 	private void update(float delta) {
 		stage.act(delta);
 		if (splashImage.hasActions() == false) {
 			if (centered) {
-				main.setScreen(main.gameScreen);
+				main.setScreen(main.getGameScreen());
 			} else {
-				centerLogo();
+				centerSplash();
 			}
 		}
 	}
 
-	private void centerLogo() {
-		// stage.addAction(fadeOut(1f));
+	private void initializeSplash() {
+		Texture splashTex = main.assets.get("images/riverdlogo.png", Texture.class);
+		splashImage = new Image(splashTex);
+		splashImage.setPosition(stage.getWidth() / 2 - 70, stage.getHeight());
+		splashImage.addAction(sequence(alpha(0f), scaleTo(.1f, .1f),
+				parallel(fadeIn(2f, Interpolation.pow2), scaleTo(0.7f, 0.7f, 2.5f, Interpolation.pow5),
+						moveTo(stage.getWidth() / 2 - 140, stage.getHeight() / 2 - 105, 2f, Interpolation.swing))));
+		stage.addActor(splashImage);
+	}
+	private void centerSplash() {
 		centered = true;
 		splashImage.clearActions();
 		splashImage.addAction(parallel(fadeIn(0.5f),
@@ -118,9 +117,9 @@ public class SplashScreen implements Screen, InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (centered) {
-			main.setScreen(main.gameScreen);
+			main.setScreen(main.getGameScreen());
 		} else {
-			centerLogo();
+			centerSplash();
 		}
 		return false;
 	}

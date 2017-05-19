@@ -48,7 +48,7 @@ public class LoadingScreen implements Screen {
 		if (main.assets.update()) {
 			TextureManager.setAssetManager(main.assets);
 			SoundManager.setAssetManager(main.assets);
-			main.setScreen(main.splashScreen);
+			main.setScreen(main.getSplashScreen());
 		}
 	}
 

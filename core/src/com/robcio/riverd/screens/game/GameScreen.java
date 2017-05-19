@@ -20,7 +20,7 @@ import com.robcio.riverd.utils.TextureManager;
 
 public class GameScreen implements Screen {
 	private final RiverDMain main;
-	private int DEBUG = 0;
+	private final boolean DEBUG = false;
 	private boolean paused = false;
 
 	private Box2DDebugRenderer b2dr;
@@ -125,7 +125,7 @@ public class GameScreen implements Screen {
 
 		towerMenu.getStage().draw();
 
-		if (DEBUG == 1) {
+		if (DEBUG) {
 			b2dr.render(world, main.camera.combined.scl(Constants.PPM));
 		}
 	}

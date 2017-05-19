@@ -43,7 +43,7 @@ public class TowerMenu implements GestureListener {
 		stage = new Stage(new FitViewport(RiverDMain.WIDTH, RiverDMain.HEIGHT, main.camera));
 		table = new Table();
 		table.setBackground(TextureManager.createDrawable("bgtile"));
-
+		//TODO drawables into static class
 		buttonMap("mapEasy1", Map.Easy1, false);
 		buttonMap("mapHard1", Map.Hard1, true);
 
@@ -94,7 +94,7 @@ public class TowerMenu implements GestureListener {
 				stage.addAction(run(new Runnable() {
 					public void run() {
 						Map.currentMap = type;
-						main.setScreen(main.splashScreen);
+						main.setScreen(main.getSplashScreen());
 					}
 				}));
 			}
