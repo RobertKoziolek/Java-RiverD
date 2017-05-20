@@ -29,8 +29,8 @@ public class Plank implements BlockInterface {
 		this.width = width;
 		this.height = height;
 		hp = 8 + (width / 17) * 27;
-		body = BodyFactory.createBox(x, y, width, height, false, false, (short) Constants.BIT_BRICKS,
-				(short) (Constants.BIT_BRICKS | Constants.BIT_WALLS | Constants.BIT_BULLETS));
+		body = BodyFactory.createBox(x, y, width, height, false, false, (short) Constants.COLL_BRICKS,
+				(short) (Constants.COLL_BRICKS | Constants.COLL_WALLS | Constants.COLL_BULLETS));
 		body.setUserData(this);
 		sprite = TextureManager.createSprite("blockPlank");
 		sprite.setOrigin(width / 2, height / 2);

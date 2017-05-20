@@ -27,8 +27,8 @@ public class Ball implements BlockInterface {
 	public Ball(int x, int y, int radius) {
 		this.radius = radius;
 		this.hp = 8 + (radius / 9) * 46;
-		body = BodyFactory.createCircle(x, y, radius, false, false, Constants.BIT_BRICKS,
-				(short) (Constants.BIT_BRICKS | Constants.BIT_WALLS | Constants.BIT_BULLETS));
+		body = BodyFactory.createCircle(x, y, radius, false, false, Constants.COLL_BRICKS,
+				(short) (Constants.COLL_BRICKS | Constants.COLL_WALLS | Constants.COLL_BULLETS));
 		body.getFixtureList().get(0).setRestitution(0.4f);
 		body.setUserData(this);
 		sprite = TextureManager.createSprite("blockBall" + MathUtils.random(4));

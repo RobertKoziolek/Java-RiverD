@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="32" tileheight="32" nextobjectid="67">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="32" tileheight="32" nextobjectid="53">
  <tileset firstgid="1" name="jungleset" tilewidth="32" tileheight="32" tilecount="512" columns="32">
   <image source="../images/map1.png" trans="ffffff" width="1024" height="512"/>
  </tileset>
@@ -23,42 +23,7 @@
 0,0,0,0,0,0,0,41,42
 </data>
  </layer>
- <objectgroup name="building">
-  <object id="55" x="0" y="0">
-   <polygon points="0,0 0,52.5 22,52.5 22,0"/>
-  </object>
-  <object id="56" x="137.5" y="0">
-   <polygon points="0,0 0,88.125 22.6,112.5 51.7,84.625 104.9,63.25 152,20.875 150.5,0"/>
-  </object>
-  <object id="58" x="160" y="192">
-   <polygon points="11.5,6.5 11,29 63,53 115,55 128,0"/>
-  </object>
-  <object id="59" x="192" y="192">
-   <polygon points="3,12.5 96.5,-86 96,0"/>
-  </object>
-  <object id="60" x="256" y="256">
-   <polygon points="9,-38.5 10.5,50 32.5,54 30.5,-66.5"/>
-  </object>
-  <object id="61" x="0" y="128">
-   <polygon points="-11,3 52.5,63 -9,123.5"/>
-  </object>
-  <object id="62" x="23.5" y="166">
-   <polygon points="0,0 32,0 30,25"/>
-  </object>
-  <object id="63" x="96" y="288">
-   <polygon points="-0.5,13 -97,108 -100,182 36,53"/>
-  </object>
-  <object id="64" x="64" y="416">
-   <polygon points="2,-9.5 151.5,-2 57,-84.5"/>
-  </object>
-  <object id="65" x="96" y="416">
-   <polygon points="11,-4 10.5,22.5 118,22 118,-25 0,-32"/>
-  </object>
-  <object id="66" x="256" y="480">
-   <polygon points="-0.5,11 -27.5,41 29.5,42.5"/>
-  </object>
- </objectgroup>
- <objectgroup name="collision" visible="0">
+ <objectgroup name="collision">
   <object id="23" x="-32" y="-32">
    <polygon points="0,0 64,0 64,96 32,96 -32,32"/>
   </object>

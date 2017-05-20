@@ -23,7 +23,7 @@ public class SplashScreen implements Screen, InputProcessor {
 
 	public SplashScreen(final RiverDMain main) {
 		this.main = main;
-		this.stage = new Stage(new FitViewport(RiverDMain.WIDTH, RiverDMain.HEIGHT, main.camera));
+		this.stage = new Stage(new FitViewport(RiverDMain.WIDTH, RiverDMain.HEIGHT, main.getCamera()));
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class SplashScreen implements Screen, InputProcessor {
 	}
 
 	private void initializeSplash() {
-		Texture splashTex = main.assets.get("images/riverdlogo.png", Texture.class);
+		Texture splashTex = main.getAssets().get("images/riverdlogo.png", Texture.class);
 		splashImage = new Image(splashTex);
 		splashImage.setPosition(stage.getWidth() / 2 - 70, stage.getHeight());
 		splashImage.addAction(sequence(alpha(0f), scaleTo(.1f, .1f),

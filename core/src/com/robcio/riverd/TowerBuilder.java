@@ -22,6 +22,7 @@ import com.robcio.riverd.utils.Constants;
 import com.robcio.riverd.utils.SoundManager;
 import com.robcio.riverd.utils.SoundManager.Sounds;
 import com.robcio.riverd.utils.TextureManager;
+import com.robcio.riverd.utils.map.BuildingSpace;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +31,6 @@ import java.util.logging.Logger;
 
 public class TowerBuilder implements InputProcessor {
 	static private final int minDistanceFromTowers = 20;
-	static private final float minDistanceFromEdge = 7 / Constants.PPM;
 	
 	private Camera camera;
 	private TowerManager towerManager;
@@ -50,54 +50,43 @@ public class TowerBuilder implements InputProcessor {
 		sprite.setSize(32, 32);
 		sprite.setOrigin(16, 16);
 	}
-
-	Body bodyThatWasHit;
-
+	private boolean canBuild;
 	public boolean touchDown(final int x, final int y, int pointer, int newParam) {
 		if (pointer == 0) {
 			camera.unproject(testPoint.set(x, y, 0));
-			bodyThatWasHit = null;//surface on map that is available for building on it
 			//FIXME doesn't allow to build at surfaces' connection
+			canBuild=false;
 			QueryCallback callback = new QueryCallback() {
-				private boolean checkForBuildingSurface(Fixture fixture){
-					if (fixture.getBody().getType() != BodyType.StaticBody){
-						return false;
-					}
-					float xx = testPoint.x / Constants.PPM, yy = testPoint.y / Constants.PPM;
-					List<Vector2> pointsAround = Arrays.asList(
-							new Vector2(xx - minDistanceFromEdge, yy),
-							new Vector2(xx + minDistanceFromEdge, yy),
-							new Vector2(xx, yy + minDistanceFromEdge),
-							new Vector2(xx, yy - minDistanceFromEdge));
-					for (Vector2 vec : pointsAround){
-						if (fixture.testPoint(vec)==false){
-							return false;
-						}
-					}
-					return true;
-				}
-
+				//return false to terminate the query
+				@Override
 				public boolean reportFixture(Fixture fixture) {
-					if (checkForBuildingSurface(fixture)==false){
+					Object userData = fixture.getBody().getUserData();
+					if (userData instanceof BuildingSpace == false){
 						return true;
 					}
+
+					float xx = testPoint.x / Constants.PPM, yy = testPoint.y / Constants.PPM;
+					if (fixture.testPoint(xx,yy)==false){
+						return true;
+					}
+
 					Vector2 vec = new Vector2(testPoint.x, testPoint.y);
 					for (Vector2 towerPosition : towerManager.getPositions()) {
 						if (towerPosition.sub(vec).len() < minDistanceFromTowers) {
 							return false;
 						}
 					}
-					bodyThatWasHit = fixture.getBody();
+					canBuild = true;
 					return false;
 				}
 			};
+			//TODO whole world gets queried, let's query just around the touch area
 			BodyFactory.getWorld().QueryAABB(callback, 0, 0, 9, 16);
 
-			if (newParam == Buttons.LEFT && bodyThatWasHit != null) {
+			if (newParam == Buttons.LEFT && canBuild) {
 				SoundManager.play(Sounds.BuildingStart);
 				towerPosition = new Vector2(testPoint.x, testPoint.y);
 				building = true;
-				bodyThatWasHit = null;
 			}
 		} else if (pointer == 1) {
 			changeTowerType();

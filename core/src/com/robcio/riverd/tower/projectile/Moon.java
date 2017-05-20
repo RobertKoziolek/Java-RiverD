@@ -37,8 +37,8 @@ public class Moon implements ProjectileInterface {
 		ParticleManager.rotateRad(pe, angle);
 		ParticleManager.rotateRad(peShot, angle);
 
-		body = BodyFactory.createCircle(x, y, radius, false, false, Constants.BIT_BULLETS,
-				(short) (Constants.BIT_BULLETPROOF | Constants.BIT_WALLSENSOR));
+		body = BodyFactory.createCircle(x, y, radius, false, false, Constants.COLL_BULLETS,
+				(short) (Constants.COLL_BULLETPROOF | Constants.COLL_WALLSENSOR));
 		body.setBullet(true);
 		body.setUserData(this);
 		body.setGravityScale(0.7f);
@@ -95,8 +95,8 @@ public class Moon implements ProjectileInterface {
 	public void passFirstWall() {
 		Filter filter = new Filter();
 
-		filter.categoryBits = Constants.BIT_BULLETS;
-		filter.maskBits = (short) (Constants.BIT_BRICKS | Constants.BIT_BULLETPROOF | Constants.BIT_WALLS);
+		filter.categoryBits = Constants.COLL_BULLETS;
+		filter.maskBits = (short) (Constants.COLL_BRICKS | Constants.COLL_BULLETPROOF | Constants.COLL_WALLS);
 		filter.groupIndex = 0;
 
 		body.getFixtureList().get(0).setFilterData(filter);

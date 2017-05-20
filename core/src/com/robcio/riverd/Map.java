@@ -24,6 +24,7 @@ public class Map {
 		this.tiledMap = new TmxMapLoader().load(currentMap);
 		TiledMapHelper.parseTileMapLayerCollisions(this.tiledMap.getLayers().get("collision").getObjects());
 		TiledMapHelper.parseTileMapLayerWallSensor(this.tiledMap.getLayers().get("wallsensor").getObjects());
+		TiledMapHelper.parseTileMapLayerBuildingSpace(this.tiledMap.getLayers().get("building").getObjects());
 		TiledMapHelper.parseTileMapLayerSpawners(this.tiledMap.getLayers().get("spawners").getObjects(), spawnerManager);
 	}
 

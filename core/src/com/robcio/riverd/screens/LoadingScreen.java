@@ -44,10 +44,10 @@ public class LoadingScreen implements Screen {
 	}
 
 	private void update(float delta) {
-		progress = main.assets.getProgress();
-		if (main.assets.update()) {
-			TextureManager.setAssetManager(main.assets);
-			SoundManager.setAssetManager(main.assets);
+		progress = main.getAssets().getProgress();
+		if (main.getAssets().update()) {
+			TextureManager.setAssetManager(main.getAssets());
+			SoundManager.setAssetManager(main.getAssets());
 			main.setScreen(main.getSplashScreen());
 		}
 	}
@@ -78,14 +78,14 @@ public class LoadingScreen implements Screen {
 	}
 
 	private void queueAssets() {
-		main.assets.load("images/riverdlogo.png", Texture.class);
+		main.getAssets().load("images/riverdlogo.png", Texture.class);
 
-		main.assets.load("images/packed/game.atlas", TextureAtlas.class);
-		main.assets.load("ui/uiskin.atlas", TextureAtlas.class);
+		main.getAssets().load("images/packed/game.atlas", TextureAtlas.class);
+		main.getAssets().load("ui/uiskin.atlas", TextureAtlas.class);
 
-		main.assets.load("sound/arrow.wav", Sound.class);
-		main.assets.load("sound/arrowhit.wav", Sound.class);
-		main.assets.load("sound/building.wav", Sound.class);
-		main.assets.load("sound/building2.wav", Sound.class);
+		main.getAssets().load("sound/arrow.wav", Sound.class);
+		main.getAssets().load("sound/arrowhit.wav", Sound.class);
+		main.getAssets().load("sound/building.wav", Sound.class);
+		main.getAssets().load("sound/building2.wav", Sound.class);
 	}
 }

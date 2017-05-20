@@ -26,6 +26,18 @@ public class TiledMapHelper {
 			shape.dispose();
 		}
 	}
+	public static void parseTileMapLayerBuildingSpace(MapObjects mapObjects) {
+		for (MapObject object : mapObjects) {
+			Shape shape;
+			if (object instanceof PolygonMapObject) {
+				shape = createPolygon((PolygonMapObject) object);
+			} else {
+				continue;
+			}
+			new BuildingSpace(shape);
+			shape.dispose();
+		}
+	}
 
 	public static void parseTileMapLayerWallSensor(MapObjects mapObjects) {
 		for (MapObject object : mapObjects) {

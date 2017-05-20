@@ -116,10 +116,6 @@ public class ProjectileContactListener implements ContactListener {
 				&& (userDataB instanceof Plank || userDataB instanceof Ball || userDataB instanceof Egg || userDataB instanceof Wall));
 	}
 
-	// public ArrayList<BodyWelder> getWelderList() {
-	// return welderList;
-	// }
-
 	public void weldEverythingWaiting() {
 		if (welderList.isEmpty() == false) {
 			for (BodyWelder welder : welderList) {

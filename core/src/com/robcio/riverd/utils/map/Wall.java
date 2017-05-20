@@ -18,8 +18,8 @@ public class Wall {
 		body = BodyFactory.getWorld().createBody(def);
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = shape;
-		fixtureDef.filter.categoryBits = Constants.BIT_WALLS;
-		fixtureDef.filter.maskBits = Constants.BIT_OTHER | Constants.BIT_BRICKS | Constants.BIT_BULLETS | Constants.BIT_WALLSENSOR;
+		fixtureDef.filter.categoryBits = Constants.COLL_WALLS;
+		fixtureDef.filter.maskBits = Constants.COLL_OTHER | Constants.COLL_BRICKS | Constants.COLL_BULLETS | Constants.COLL_WALLSENSOR;
 		body.createFixture(fixtureDef);
 		body.setUserData(this);
 	}

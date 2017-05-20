@@ -28,8 +28,8 @@ public class Egg implements BlockInterface {
 		this.radius1 = radius1;
 		this.radius2=radius2;
 		this.hp = 8 + ((radius1+radius2) / 9) * 36;
-		body = BodyFactory.createOval(x, y, radius1, radius2, false, false, Constants.BIT_BRICKS,
-				(short) (Constants.BIT_BRICKS | Constants.BIT_WALLS | Constants.BIT_BULLETS));
+		body = BodyFactory.createOval(x, y, radius1, radius2, false, false, Constants.COLL_BRICKS,
+				(short) (Constants.COLL_BRICKS | Constants.COLL_WALLS | Constants.COLL_BULLETS));
 		body.getFixtureList().get(0).setRestitution(0.7f);
 		body.setUserData(this);
 		

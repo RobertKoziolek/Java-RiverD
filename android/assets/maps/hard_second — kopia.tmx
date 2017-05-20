@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="32" tileheight="32" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="32" tileheight="32" nextobjectid="23">
  <tileset firstgid="1" name="jungleset" tilewidth="32" tileheight="32" tilecount="512" columns="32">
   <image source="../images/map1.png" trans="ffffff" width="1024" height="512"/>
  </tileset>
@@ -23,7 +23,7 @@
 146,327,359,0,0,0,39,71,210
 </data>
  </layer>
- <objectgroup name="collision" visible="0">
+ <objectgroup name="collision">
   <object id="5" x="0" y="-32">
    <polygon points="0,0 32,0 32,544 0,544"/>
   </object>
@@ -50,26 +50,6 @@
   </object>
   <object id="22" x="64" y="576">
    <polygon points="0,0 128,0 128,-32 0,-32"/>
-  </object>
- </objectgroup>
- <objectgroup name="building">
-  <object id="25" x="0" y="0">
-   <polygon points="0,0 23.3333,-0.666667 20,188 -4.66667,190.667"/>
-  </object>
-  <object id="26" x="18.6667" y="161.333">
-   <polygon points="0,0 106,108.667 108.667,275.333 10,372.667 -232.667,221.333"/>
-  </object>
-  <object id="27" x="125.333" y="268">
-   <polygon points="0,0 24.6667,-0.666667 25.3333,145.333 -3.33333,174"/>
-  </object>
-  <object id="28" x="141.333" y="-6">
-   <polygon points="0,0 0,128.667 155.333,288.667 162,-3.33333"/>
-  </object>
-  <object id="29" x="264.667" y="246.667">
-   <polygon points="0,0 0,275.333 193.333,215.333"/>
-  </object>
-  <object id="30" x="268" y="448">
-   <polygon points="0,0 -82,86 13.3333,82"/>
   </object>
  </objectgroup>
  <objectgroup name="spawners" visible="0">

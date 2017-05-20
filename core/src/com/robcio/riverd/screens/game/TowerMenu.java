@@ -24,7 +24,6 @@ import com.robcio.riverd.tower.Tower;
 import com.robcio.riverd.utils.TextureManager;
 
 public class TowerMenu implements GestureListener {
-	// private Skin skin;
 	private RiverDMain main;
 	private Stage stage;
 	private Table table, mainTable;
@@ -40,7 +39,7 @@ public class TowerMenu implements GestureListener {
 	}
 
 	private void buildButtons() {
-		stage = new Stage(new FitViewport(RiverDMain.WIDTH, RiverDMain.HEIGHT, main.camera));
+		stage = new Stage(new FitViewport(RiverDMain.WIDTH, RiverDMain.HEIGHT, main.getCamera()));
 		table = new Table();
 		table.setBackground(TextureManager.createDrawable("bgtile"));
 		//TODO drawables into static class

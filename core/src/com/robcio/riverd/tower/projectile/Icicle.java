@@ -33,8 +33,8 @@ public class Icicle implements ProjectileInterface {
 		pe = ParticleManager.createParticleEffect("icicle", 0.1f, true);
 		ParticleManager.rotateRad(pe, angle);
 
-		body = BodyFactory.createArrow(x, y, scale, false, false, Constants.BIT_BULLETS,
-				(short) (Constants.BIT_BRICKS | Constants.BIT_BULLETPROOF | Constants.BIT_WALLSENSOR));
+		body = BodyFactory.createArrow(x, y, scale, false, false, Constants.COLL_BULLETS,
+				(short) (Constants.COLL_BRICKS | Constants.COLL_BULLETPROOF | Constants.COLL_WALLSENSOR));
 		body.setBullet(true);
 		body.getFixtureList().get(0).setDensity(0.5f);
 		body.resetMassData();
@@ -125,8 +125,8 @@ public class Icicle implements ProjectileInterface {
 		if (attacking == true) {
 			Filter filter = new Filter();
 
-			filter.categoryBits = Constants.BIT_BULLETS;
-			filter.maskBits = (short) (Constants.BIT_BRICKS | Constants.BIT_BULLETPROOF | Constants.BIT_WALLS);
+			filter.categoryBits = Constants.COLL_BULLETS;
+			filter.maskBits = (short) (Constants.COLL_BRICKS | Constants.COLL_BULLETPROOF | Constants.COLL_WALLS);
 			filter.groupIndex = 0;
 
 			body.getFixtureList().get(0).setFilterData(filter);

@@ -49,12 +49,12 @@ public class GameScreen implements Screen {
 
 		b2dr = new Box2DDebugRenderer();
 		tmr = new OrthogonalTiledMapRenderer(map.getTiledMap());
-		tmr.setView(main.camera);
+		tmr.setView(main.getCamera());
 
 		arrowListener = new ProjectileContactListener();
 		world.setContactListener(arrowListener);
 
-		towerBuilder = new TowerBuilder(main.camera, map.getTowerManager());
+		towerBuilder = new TowerBuilder(main.getCamera(), map.getTowerManager());
 
 		towerMenu = new TowerMenu(towerBuilder, main);
 
@@ -94,39 +94,36 @@ public class GameScreen implements Screen {
 
 	public void render(float delta) {
 		update(Gdx.graphics.getDeltaTime());
-		main.camera.update();
+		main.getCamera().update();
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		main.batch.setProjectionMatrix(main.camera.combined);
+		//main.getBatch().setProjectionMatrix(main.getCamera().combined);
+		main.setBatchProjectionMatrixToCombined();
 
-		main.batch.begin();
-		main.batch.disableBlending();// Tak lepiej tlo robic
-		background.draw(main.batch, 0, 0, RiverDMain.WIDTH, RiverDMain.HEIGHT);
-		main.batch.enableBlending();
-		main.batch.end();
+		main.getBatch().begin();
+		main.getBatch().disableBlending();// Tak lepiej tlo robic
+		background.draw(main.getBatch(), 0, 0, RiverDMain.WIDTH, RiverDMain.HEIGHT);
+		main.getBatch().enableBlending();
+		main.getBatch().end();
 
 		tmr.render();
 
-		main.batch.begin();
-		map.renderBricksAndTowers(main.batch, delta);
+		main.getBatch().begin();
+		map.renderBricksAndTowers(main.getBatch(), delta);
 
-		towerBuilder.draw(main.batch);
+		towerBuilder.draw(main.getBatch());
 
-		main.font.draw(main.batch, "FPS: " + Gdx.graphics.getFramesPerSecond() + ", proj: "
+		main.getFont().draw(main.getBatch(), "FPS: " + Gdx.graphics.getFramesPerSecond() + ", proj: "
 				+ map.getTowerManager().getNumberOfProjectiles(), 2, 15);
-		// XXX debug FPS on screen
-		// System.out.println("renderCalls: "+main.batch.renderCalls);
-		// System.out.println("maxsprites: "+main.batch.maxSpritesInBatch);
-		// XXX debug render calls
 
-		main.batch.end();
+		main.getBatch().end();
 
 		towerMenu.getStage().draw();
 
 		if (DEBUG) {
-			b2dr.render(world, main.camera.combined.scl(Constants.PPM));
+			b2dr.render(world, main.getCamera().combined.scl(Constants.PPM));
 		}
 	}
 
